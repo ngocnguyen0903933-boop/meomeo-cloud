@@ -1,7 +1,8 @@
 {
   "schemaVersion": "1.0",
   "service": "meo-cloud-v0",
-  "status": "operational",
+  "status": "degraded",
+  "message": "Static deployment is available; custom-domain HTTPS is awaiting a valid certificate.",
   "version": "0.1.0",
   "channel": "development",
   "buildId": null,
