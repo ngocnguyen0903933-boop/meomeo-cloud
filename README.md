@@ -30,6 +30,10 @@ The workflow in `.github/workflows/pages.yml` runs `node tools/validate.mjs` to 
 
 DNS uses an A record from `meomeoai.mooo.com` to GitHub Pages (`185.199.108.153`) so MX records can coexist at the same hostname. Do not use a CNAME alongside MX. This is a GitHub hosting address, never the Owner's home IP. HTTPS must be enforced in repository Pages settings after certificate issuance and externally verified. Email is not considered ready until an actual inbound test is confirmed.
 
+### Current domain limitation
+
+FreeDNS currently rejects MX creation on this shared dynamic-DNS domain with an administrator-approval restriction. ImprovMX accepted the hostname and founder alias, but mail cannot be received until the DNS restriction is lifted and MX/SPF configuration is verified. Changing email-forwarding providers would not resolve this DNS restriction. No working domain email or TLS certificate is implied by a successful Pages deployment.
+
 ## Public endpoints
 
 - `/health/` and `/api/health.json`

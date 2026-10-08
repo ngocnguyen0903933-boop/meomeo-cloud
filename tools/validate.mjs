@@ -1,5 +1,6 @@
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { createHash } from 'node:crypto';
 
 // Deliberate public allowlist. Tooling, Git history and private additions are never deployed.
 const files = ['index.html', '404.html', 'CNAME', 'robots.txt', 'sitemap.xml',
@@ -20,6 +21,14 @@ for (const file of files) {
   if (file.endsWith('.json')) JSON.parse(text);
   if (file.endsWith('.html')) {
     if (!text.includes('Content-Security-Policy')) throw new Error(`Missing CSP: ${file}`);
+    for (const [, script] of text.matchAll(/<script[^>]*>([^]*?)<\/script>/g)) {
+      if (script.trim() && !text.includes(`sha256-${createHash('sha256').update(script).digest('base64')}`)) {
+        throw new Error(`Unhashed inline script: ${file}`);
+      }
+    }
+    for (const [, anchor] of text.matchAll(/href="#([^"]+)"/g)) {
+      if (!text.includes(`id="${anchor}"`)) throw new Error(`Broken anchor #${anchor} in ${file}`);
+    }
     for (const [, target] of text.matchAll(/(?:href|src)="(\/[^"?#]*)(?:[?#][^"]*)?"/g)) {
       if (target.startsWith('//')) throw new Error(`Protocol-relative URL: ${file}`);
       const path = target.endsWith('/') ? `${target}index.html` : target;

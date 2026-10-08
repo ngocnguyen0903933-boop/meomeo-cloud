@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-08T00:00:00Z",
+  "generatedAt": null,
   "services": [
     {"id": "website", "name": "Website", "status": "operational"},
     {"id": "meo-cloud-v0", "name": "Meo Cloud V0", "status": "operational"},
@@ -9,4 +9,3 @@
     {"id": "public-releases", "name": "Public Releases", "status": "not-released"}
   ]
 }
-
