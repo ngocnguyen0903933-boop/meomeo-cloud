@@ -5,6 +5,6 @@ Thumbs.db
 .env.*
 !.env.example
 node_modules/
+_site/
 .idea/
 .vscode/
-

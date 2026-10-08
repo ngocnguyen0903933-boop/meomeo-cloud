@@ -19,7 +19,7 @@ Serve this directory with any static HTTP server. No build step and no environme
 
 ## Validation
 
-The workflow in `.github/workflows/pages.yml` checks required files, internal links, JSON syntax, and sensitive-file patterns before deploying to GitHub Pages.
+The workflow in `.github/workflows/pages.yml` runs `node tools/validate.mjs` to check required files, internal public links, JSON syntax, CSP presence, and common secret patterns. Only an explicit public allowlist is staged in `_site`; tooling and repository documents are not deployed. This is a baseline check, not a guarantee that all possible secrets are detectable. Build metadata records the deployment timestamp and commit ID.
 
 ## Deployment
 
@@ -28,7 +28,7 @@ The workflow in `.github/workflows/pages.yml` checks required files, internal li
 3. The Pages artifact is deployed automatically.
 4. GitHub Pages serves `meomeoai.mooo.com` using the repository `CNAME`.
 
-DNS must contain a CNAME from `meomeoai.mooo.com` to `ngocnguyen0903933-boop.github.io`. HTTPS is enforced in repository Pages settings after certificate issuance.
+DNS uses an A record from `meomeoai.mooo.com` to GitHub Pages (`185.199.108.153`) so MX records can coexist at the same hostname. Do not use a CNAME alongside MX. This is a GitHub hosting address, never the Owner's home IP. HTTPS must be enforced in repository Pages settings after certificate issuance and externally verified. Email is not considered ready until an actual inbound test is confirmed.
 
 ## Public endpoints
 
@@ -41,4 +41,3 @@ DNS must contain a CNAME from `meomeoai.mooo.com` to `ngocnguyen0903933-boop.git
 ## Security
 
 Do not commit credentials, private research, personal data, signing keys, private source, or device-control details. Report a security issue using [`SECURITY.md`](SECURITY.md).
-
