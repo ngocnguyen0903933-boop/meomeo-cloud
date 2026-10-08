@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-10-08T00:00:00Z",
+  "services": [
+    {"id": "website", "name": "Website", "status": "operational"},
+    {"id": "meo-cloud-v0", "name": "Meo Cloud V0", "status": "operational"},
+    {"id": "meo-remote", "name": "Meo Remote", "status": "experimental"},
+    {"id": "pnc", "name": "PNC", "status": "research"},
+    {"id": "public-releases", "name": "Public Releases", "status": "not-released"}
+  ]
+}
+

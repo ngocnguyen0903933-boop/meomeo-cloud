@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "product": "Meo Meo AI",
+  "component": "Meo Cloud V0 public website",
+  "version": "0.1.0",
+  "releaseChannel": "development",
+  "releaseDate": "2026-10-08",
+  "publicReleaseAvailable": false,
+  "sha256": null,
+  "downloadUrl": null,
+  "releaseNotesUrl": "https://meomeoai.mooo.com/releases/",
+  "signature": null,
+  "signerId": null,
+  "provenance": null,
+  "immutableVersionId": "meo-cloud-web-0.1.0-2026-10-08"
+}
+

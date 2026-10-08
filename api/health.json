@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "service": "meo-cloud-v0",
+  "status": "operational",
+  "version": "0.1.0",
+  "channel": "development",
+  "buildId": "2026-10-08-v0",
+  "generatedAt": "2026-10-08T00:00:00Z"
+}
+
